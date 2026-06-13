@@ -1,18 +1,31 @@
+# Workflow name displayed in the GitHub Actions tab
 name: Testing Workflow Variables
 
+# Event that triggers the workflow manually
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
+# Global environment variable available to all jobs
 env:
   cloud: google-cloud
 
 jobs:
+  # Define a job named greeting_job
   greeting_job:
+    # The runner on which the job will execute
     runs-on: ubuntu-latest
+
+    # Job-level environment variable
     env:
       Greeting: Hello
+
     steps:
-      - name: "Say Hello Mona it's Monday"
+      # Step to print a greeting message
+      - name: "Say Hello to Jay"
+
+        # Execute a shell command
         run: echo "$Greeting $First_Name is using $cloud!"
+
+        # Step-level environment variable
         env:
-          First_Name: Jay 
+          First_Name: Jay
