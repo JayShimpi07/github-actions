@@ -1,0 +1,31 @@
+# Name of the GitHub Actions workflow
+name: Testing Configuration Variables
+
+# Trigger the workflow manually from the GitHub Actions tab
+on:
+  workflow_dispatch:
+
+# Workflow-level environment variable
+env:
+  cloud: google-cloud
+
+jobs:
+  # Define a job named greeting_job
+  greeting_job:
+    # Run this job on the latest Ubuntu runner
+    runs-on: ubuntu-latest
+
+    # Job-level environment variable
+    env:
+      Greeting: Hello
+
+    steps:
+      # Step to display a greeting message
+      - name: "Say Hello to Jay"
+
+        # Print workflow, job, step, and configuration variables
+        run: echo "$Greeting $First_Name is using $cloud with project ${{ vars.PROJECT_ID }}!"
+
+        # Step-level environment variable
+        env:
+          First_Name: Jay
